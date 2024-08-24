@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose  = require('mongoose');
 // const Blogpost = require('./models/blogModel');
 const blogController = require('./Controller/blogController');
+const cors = require('cors')
 
 const USER_NAME = 'alisherkhan';
 const PASSWORD = 'ali123';
@@ -24,6 +25,8 @@ mongoose.connect(DB_URI)
         console.error('Failed to connect to database', err);
         process.exit(1); // Exit the process with a failure code
     })
+
+app.use(cors());
 
 app.get('/', (req, res)=>{
     res.send("hello this is index page");
